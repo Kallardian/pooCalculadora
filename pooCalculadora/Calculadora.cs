@@ -19,10 +19,47 @@ namespace pooCalculadora
             this.valorB = b;
             this.op = operador;
         }
+        
+        public Calculo()
+        {
+        }
 
-        public decimal Calcular(Calculo a)
+        public string Calcular()
         {
 
-        }
+            decimal? result;
+
+            switch (this.op)
+            {
+                case '+':
+                    result = this.valorA + this.valorB;
+                    break;
+
+                case '-':
+                    result = this.valorA - this.valorB;
+                    break;
+
+                case '*':
+                    result = this.valorA * this.valorB;
+                    break;
+
+                case '/':
+                    if (this.valorB != 0)
+                        result = this.valorA / this.valorB;
+                    else
+                        result = null;
+                    break;
+
+                default:
+                    Console.WriteLine("Ainda não é possivel fazer esta operação");
+                    result = null;
+                    break;
+            }
+
+            return result.HasValue ? result.ToString() : null;
+            }
+
+
     }
 }
+
